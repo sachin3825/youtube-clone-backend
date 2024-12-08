@@ -13,7 +13,7 @@ app.use(
 
 // * JSON Parsing and json limiting
 app.use(
-  express.json({
+  json({
     limit: "16kb",
   })
 );
@@ -26,5 +26,11 @@ app.use(express.static("public"));
 
 // * cookies configuration
 app.use(cookieParser());
+
+// routes import
+import userRouter from "./routes/user.routes.js";
+
+//route declaration
+app.use("/api/v1/user", userRouter);
 
 export { app };
